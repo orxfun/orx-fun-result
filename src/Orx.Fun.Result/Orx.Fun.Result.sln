@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orx.Fun.Result", "Orx.Fun.Result\Orx.Fun.Result.csproj", "{A4044F4F-C42F-4D8D-9E97-BED984340708}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orx.Fun.Result.Tests", "Orx.Fun.Result.Tests\Orx.Fun.Result.Tests.csproj", "{BACEF884-F43C-4D4D-8B90-D0D20863FB19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A4044F4F-C42F-4D8D-9E97-BED984340708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4044F4F-C42F-4D8D-9E97-BED984340708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4044F4F-C42F-4D8D-9E97-BED984340708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BACEF884-F43C-4D4D-8B90-D0D20863FB19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BACEF884-F43C-4D4D-8B90-D0D20863FB19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BACEF884-F43C-4D4D-8B90-D0D20863FB19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BACEF884-F43C-4D4D-8B90-D0D20863FB19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

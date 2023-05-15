@@ -8,7 +8,7 @@
   </PropertyGroup>
 
 	<PropertyGroup>
-		<VersionPrefix>1.0.0</VersionPrefix>
+		<VersionPrefix>1.0.1</VersionPrefix>
 		<Description>A simple result type for C#, not minding the error type, instead aiming to be explicit, concise and fluent.</Description>
 		<PackageProjectUrl>https://orxfun.github.io/orx-fun-result/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/orxfun/orx-fun-result</RepositoryUrl>

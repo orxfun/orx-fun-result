@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>Res&lt;T&gt; Structure</title><meta name="Title" content="Res&lt;T&gt;" /><meta name="Help.Id" content="T:Orx.Fun.Result.Res`1" /><meta name="Help.ContentType" content="Reference" /><meta name="container" content="Orx.Fun.Result" /><meta name="guid" content="T_Orx_Fun_Result_Res_1" /><meta name="Description" content="Result type which can be either of the two variants: Ok(value-of-) or Err(error-message)." /><meta name="tocFile" content="../toc/IDA.xml" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div class="level-item"><a target="_blank" rel="noopener noreferrer" href="https://github.com/orxfun?tab=repositories"><img alt="orx" style="height: 50px;" src="../icons/orx-logo.png" /></a></div><div id="DocumentationTitle" class="level-item">Orx.Fun.Result (C#)</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="TopicContent" class="column content is-7"><h1>Res<span id="LST9F6B7ACD_0" data-languageSpecificText="cpp=&lt;|cs=&lt;|fs=&lt;|vb=(Of |nu=("></span><span class="typeparameter">T</span><span id="LST9F6B7ACD_1" data-languageSpecificText="cpp=&gt;|cs=&gt;|fs=&gt;|vb=)|nu=)"></span> Structure</h1><div class="summary">
+            Result type which can be either of the two variants: Ok(value-of-<span class="parameter">T</span>) or Err(error-message).
+            </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Definition</h2><div id="IDBSection"><strong>Namespace:</strong> <a href="N_Orx_Fun_Result.htm">Orx.Fun.Result</a><br /><strong>Assembly:</strong> Orx.Fun.Result (in Orx.Fun.Result.dll) Version: 1.0.0<div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">struct</span> <span class="identifier">Res</span>&lt;T&gt; : <span class="identifier">IEquatable</span>&lt;<span class="identifier">Res</span>&lt;T&gt;&gt;
+</code></pre></div></div><dl class="inheritanceHierarchy"><dt>Inheritance</dt><dd><a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <a href="https://learn.microsoft.com/dotnet/api/system.valuetype" target="_blank" rel="noopener noreferrer">ValueType</a>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <span class="selflink">Res<span id="LST9F6B7ACD_2" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|nu=(|fs=&lt;'"></span>T<span id="LST9F6B7ACD_3" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|nu=)|fs=&gt;"></span></span></dd></dl><dl class="implementsList"><dt>Implements</dt><dd><a href="https://learn.microsoft.com/dotnet/api/system.iequatable-1" target="_blank" rel="noopener noreferrer">IEquatable</a><span id="LST9F6B7ACD_4" data-languageSpecificText="cpp=&lt;|cs=&lt;|fs=&lt;|vb=(Of |nu=("></span><span class="selflink">Res</span><span id="LST9F6B7ACD_5" data-languageSpecificText="cpp=&lt;|cs=&lt;|fs=&lt;|vb=(Of |nu=("></span><span class="selflink"><span class="typeparameter">T</span></span><span id="LST9F6B7ACD_6" data-languageSpecificText="cpp=&gt;|cs=&gt;|fs=&gt;|vb=)|nu=)"></span><span id="LST9F6B7ACD_7" data-languageSpecificText="cpp=&gt;|cs=&gt;|fs=&gt;|vb=)|nu=)"></span></dd></dl><h4>Type Parameters</h4><dl><dt class="has-text-weight-normal"><span class="parameter">T</span></dt><dd><p class="missing">[Missing &lt;typeparam name="T"/&gt; documentation for "T:Orx.Fun.Result.Res`1"]</p></dd></dl></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Constructors</h2><div id="IDAGASection"><table id="ConstructorList" class="table is-hoverable"><tr><td><a href="M_Orx_Fun_Result_Res_1__ctor.htm">Res<span id="LST9F6B7ACD_8" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|nu=(|fs=&lt;'"></span>T<span id="LST9F6B7ACD_9" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|nu=)|fs=&gt;"></span></a></td><td>
+            Result type which can either be Ok(value) or Err.
+            Parameterless ctor returns Ok(default(T)); better use <a href="M_Orx_Fun_Result_ResultExtensions_Ok__1.htm">Ok<span id="LST9F6B7ACD_10" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_11" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>(T)</a> or <a href="M_Orx_Fun_Result_ResultExtensions_Err__1.htm">Err<span id="LST9F6B7ACD_12" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_13" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>(String)</a> to construct results by adding `using static OptRes.Ext`.
+            </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Properties</h2><div id="ID3GASection"><table id="PropertyList" class="table is-hoverable"><tr><td><a href="P_Orx_Fun_Result_Res_1_IsErr.htm">IsErr</a></td><td>
+            True if the result is Err; false otherwise.
+            </td></tr><tr><td><a href="P_Orx_Fun_Result_Res_1_IsOk.htm">IsOk</a></td><td>
+            True if the result is Ok; false otherwise.
+            </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Methods</h2><div id="IDCGASection"><table id="MethodList" class="table is-hoverable"><tr><td><a href="M_Orx_Fun_Result_Res_1_And_1.htm">And(Func<span id="LST9F6B7ACD_14" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>Res<span id="LST9F6B7ACD_15" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td>
+    
+            Combines two results: this and <span class="parameter">other</span> as follows:
+            <ul><li>returns this if both are Ok;</li><li>returns the error if one of the results is an Err;</li><li>returns the combined error if both results are Err.</li></ul><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">var combined = Ok(12).And(Ok());
+Assert.Equal(Ok(12), combined);
+
+combined = Ok(12).And(Err("failure"));
+Assert.True(combined.IsErr);
+
+combined = Err&lt;int&gt;("error").And(Ok());
+Assert.True(combined.IsErr);
+
+combined = Err&lt;int&gt;("error").And(Err("failure"));
+Assert.True(combined.IsErr);</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_And.htm">And(Res)</a></td><td>
+            Combines two results: this and <span class="parameter">other</span> as follows:
+            <ul><li>returns this if both are Ok;</li><li>returns the error if one of the results is an Err;</li><li>returns the combined error if both results are Err.</li></ul><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">var combined = Ok(12).And(Ok());
+Assert.Equal(Ok(12), combined);
+
+combined = Ok(12).And(Err("failure"));
+Assert.True(combined.IsErr);
+
+combined = Err&lt;int&gt;("error").And(Ok());
+Assert.True(combined.IsErr);
+
+combined = Err&lt;int&gt;("error").And(Err("failure"));
+Assert.True(combined.IsErr);</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_And__1_1.htm">And<span id="LST9F6B7ACD_16" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T2<span id="LST9F6B7ACD_17" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>(Func<span id="LST9F6B7ACD_18" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>Res<span id="LST9F6B7ACD_19" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T2<span id="LST9F6B7ACD_20" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span><span id="LST9F6B7ACD_21" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td>
+    
+            Combines two results: this and <span class="parameter">other</span> as follows:
+            <ul><li>returns Ok of a tuple of both values if both results are Ok;</li><li>returns the error if one of the results is an Err;</li><li>returns the combined error if both results are Err.</li></ul><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">var combined = Ok(12).And(Ok(true));
+Assert.Equal(Ok((12, true)), combined);
+
+combined = Ok(12).And(Err&lt;bool&gt;("failure"));
+Assert.True(combined.IsErr);
+
+combined = Err&lt;int&gt;("error").And(Ok(true));
+Assert.True(combined.IsErr);
+
+combined = Err&lt;int&gt;("error").And(Err&lt;bool&gt;("failure"));
+Assert.True(combined.IsErr);</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_And__1.htm">And<span id="LST9F6B7ACD_22" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T2<span id="LST9F6B7ACD_23" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>(Res<span id="LST9F6B7ACD_24" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T2<span id="LST9F6B7ACD_25" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td>
+            Combines two results: this and <span class="parameter">other</span> as follows:
+            <ul><li>returns Ok of a tuple of both values if both results are Ok;</li><li>returns the error if one of the results is an Err;</li><li>returns the combined error if both results are Err.</li></ul><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">var combined = Ok(12).And(Ok(true));
+Assert.Equal(Ok((12, true)), combined);
+
+combined = Ok(12).And(Err&lt;bool&gt;("failure"));
+Assert.True(combined.IsErr);
+
+combined = Err&lt;int&gt;("error").And(Ok(true));
+Assert.True(combined.IsErr);
+
+combined = Err&lt;int&gt;("error").And(Err&lt;bool&gt;("failure"));
+Assert.True(combined.IsErr);</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_Do.htm">Do</a></td><td>
+            Runs <span class="parameter">action</span>(Unwrap()) only if IsOk; and returns itself back.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">// the logging call will only be made if the result of TryGetUser is Ok of a user.
+// Since Do returns back the result, it can still be assigned to var 'user'.
+Res&lt;User&gt; user = TryGetUser().Do(u =&gt; Log.Info($"User '{u.Name}' grabbed"));</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_DoIfErr.htm">DoIfErr</a></td><td>
+            Runs <span class="parameter">actionOnErr</span>() only if IsErr; and returns itself back.
+            Counterpart of <a href="M_Orx_Fun_Result_Res_1_Do.htm">Do(Action<span id="LST9F6B7ACD_26" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_27" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a> for the Err variant.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">// the logging call will only be made if the result of TryGetUser is Err.
+// Since DoIfErr returns back the result, it can still be assigned to var 'user'.
+Res&lt;User&gt; user = TryGetUser().DoIfErr(err =&gt; Log.Warning($"User could not be read. {err}"));</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_Equals_1.htm">Equals(Object)</a></td><td>
+            Returns whether this result is equal to the <span class="parameter">other</span>.
+            <br />(Overrides <a href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals#system-valuetype-equals(system-object)" target="_blank" rel="noopener noreferrer">ValueType<span id="LST9F6B7ACD_28" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>Equals(Object)</a>)</td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_Equals.htm">Equals(Res<span id="LST9F6B7ACD_29" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_30" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td>
+            Returns true if both values are <a href="P_Orx_Fun_Result_Res_1_IsOk.htm">IsOk</a> and their unwrapped values are equal; false otherwise.
+            </td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_ErrorMessage.htm">ErrorMessage</a></td><td>
+            Returns Some(error-message) if IsErr; None&lt;string&gt;() if IsOk.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">var user = Err&lt;User&gt;("failed to get user");
+Assert(user.ErrorMessage() == Some("failed to get user"));</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_FlatMap.htm">FlatMap(Func<span id="LST9F6B7ACD_31" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T, Res<span id="LST9F6B7ACD_32" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td>
+            Returns the error when IsErr; <span class="parameter">map</span>(Unwrap()) when IsOk flattenning the result.
+            Shorthand combining Map and Flatten calls.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res&lt;Team&gt; TryGetTeam() { .. } // tries to grab a team; might fail, hence, returns Res.
+static Res TryPutTeam(Team team) { .. } // tries to put the team; might fail, hence, returns Res.
+
+Res result = TryGetTeam().FlatMap(TryPutTeam);
+// equivalently:
+Res result = TryGetTeam().FlatMap(team =&gt; TryPutTeam(team));
+
+// this is a shorthand for:
+Res result = TryGetTeam()   // Res&lt;Team&gt;
+    .Map(TryPutTeam)        // Res&lt;Res&gt;
+    .Flatten();             // Res</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_FlatMap__1.htm">FlatMap<span id="LST9F6B7ACD_33" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LST9F6B7ACD_34" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>(Func<span id="LST9F6B7ACD_35" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T, Res<span id="LST9F6B7ACD_36" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LST9F6B7ACD_37" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span><span id="LST9F6B7ACD_38" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td>
+            Returns None when IsNone; <span class="parameter">map</span>(val) when IsOk flattening the result.
+            Shorthand combining Map and Flatten calls.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res&lt;User&gt; TryGetUser() {
+    // method that tries to get the user, return Ok(user) or Err.
+}
+static Res&lt; double&gt; TryGetBalance(User user) {
+    // method that tries to get usedr's balance; which might fail, returns:
+    // Ok(balance) or Err
+}
+Res&lt;double&gt; balance = TryGetUser().FlatMap(TryGetBalance);
+// equivalent to both below:
+var balance = TryGetUser().FlatMap(user =&gt; TryGetBalance(user));
+var balance = TryGetUser()              // Res&lt;User&gt;
+    .Map(user =&gt; TryGetBalance(user))   // Res&lt;Res&gt;
+    .Flatten();                         // Res</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_FlatMapBack.htm">FlatMapBack</a></td><td>
+            Returns the error when IsErr; <span class="parameter">map</span>(Unwrap()).Map(() =&gt; this) when IsOk flattenning the result.
+            Shorthand combining Map, Flatten and Map calls.
+            
+            <p>
+            Note that the difference of <a href="M_Orx_Fun_Result_Res_1_FlatMapBack.htm">FlatMapBack(Func<span id="LST9F6B7ACD_39" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T, Res<span id="LST9F6B7ACD_40" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a> from <a href="M_Orx_Fun_Result_Res_1_FlatMap.htm">FlatMap(Func<span id="LST9F6B7ACD_41" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T, Res<span id="LST9F6B7ACD_42" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a>
+            is in the return type; returns Res&lt;T&gt; rather than Res.
+            </p><p>
+            It appends back the original value to the result if the result was and is Ok after the map call.
+            </p><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res&lt;Team&gt; TryGetTeam() { .. } // tries to grab a team; might fail, hence, returns Res.
+static Res TryPutTeam(Team team) { .. } // tries to put the team; might fail, hence, returns Res.
+
+Res&lt;Team&gt; result = TryGetTeam().FlatMapBack(TryPutTeam);
+// equivalently:
+Res&lt;Team&gt; result = TryGetTeam().FlatMapBack(team =&gt; TryPutTeam(team));
+
+// this is a shorthand for:
+Res&lt;Team&gt; result = TryGetTeam()                               // Res&lt;Team&gt;
+    .FlatMap(team =&gt; TryPutTeam(team).Map(() =&gt; team)); // Res&lt;Team&gt;</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_GetHashCode.htm">GetHashCode</a></td><td>
+            Serves as the default hash function.
+            <br />(Overrides <a href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode#system-valuetype-gethashcode" target="_blank" rel="noopener noreferrer">ValueType<span id="LST9F6B7ACD_43" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>GetHashCode<span id="LST9F6B7ACD_44" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a>)</td></tr><tr><td><a href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype" target="_blank" rel="noopener noreferrer">GetType</a></td><td><br />(Inherited from <a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a>)</td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_IntoOpt.htm">IntoOpt</a></td><td>
+            Converts the result type into the option type as follows:
+            <ul><li>Ok(value) =&gt; Some(value),</li><li>Err(error) =&gt; None, ignoring the error message.</li></ul></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_Map__1.htm">Map<span id="LST9F6B7ACD_45" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LST9F6B7ACD_46" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span></a></td><td>
+            Returns the Err back when IsErr; Ok(<span class="parameter">map</span>(Unwrap())) when IsOk.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">// session will be Err if the user is Err; Ok of a session for the user when Ok.
+Res&lt;Session&gt; session = TryGetUser.Map(user =&gt; NewSession(user.Secrets));</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_Match__1.htm">Match<span id="LST9F6B7ACD_47" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LST9F6B7ACD_48" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span></a></td><td>
+            Maps into <span class="parameter">whenOk</span>(Unwrap()) whenever IsOk; and into <span class="parameter">whenErr</span>(error-message) otherwise.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">Res&lt;User&gt; user = TryGetUser(..);
+string greeting = user.Match(u =&gt; $"Welcome back {u.Name}", err =&gt; $"Failed to get user. {err}");
+// equivalently:
+greeting = user.Match(
+    whenOk: u =&gt; $"Welcome back {u.Name}",
+    whenErr: err =&gt; $"Failed to get user. {err}"
+);</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_MatchDo.htm">MatchDo</a></td><td>
+            Executes <span class="parameter">whenOk</span>(Unwrap()) if IsOk; <span class="parameter">whenErr</span>(error-message) otherwise.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">Res&lt;User&gt; user = LoginUser(..);
+user.MatchDo(
+    whenOk: u =&gt; Log.Info($"Logged in user: {u.Name}"),
+    whenErr: err =&gt; Log.Error($"Failed login. ${err}")
+);</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_OkIf.htm">OkIf</a></td><td>
+            Returns back the Err if this is Err.
+            Otherwise, returns Ok(value) if <span class="parameter">condition</span>(value) holds; Err if it does not hold.
+            Especially useful in fluent input validation.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res&lt;Account&gt; TryParseAccount(..) { }
+static bool IsAccountNumberValid(int number) { }
+static bool DoesAccountExist(string code) { }
+
+var account = TryParseAccount(..)
+                .OkIf(acc =&gt; IsAccountNumberValid(acc.Number))
+                .OkIf(acc =&gt; DoesAccountExist(acc.Code));
+// account will be Ok(account) only if:
+// - TryParseAccount returns Ok(account), and further,
+// - both IsAccountNumberValid and DoesAccountExist validation checks return true.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_Pure.htm">Pure</a></td><td>
+            Simply returns Ok&lt;T&gt; function: val =&gt; Ok(val).
+            Useful for composing functions of Res&lt;T&gt; type.
+            </td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_ThrowIfErr.htm">ThrowIfErr<span id="LST9F6B7ACD_49" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a></td><td>
+            Returns the result back when <a href="P_Orx_Fun_Result_Res_1_IsOk.htm">IsOk</a>; throws a NullReferenceException when <a href="P_Orx_Fun_Result_Res_1_IsErr.htm">IsErr</a>.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res&lt;User&gt; QueryUser(..) {
+    // might fail; hence, returns a Res&lt;User&gt; rather than just User.
+}
+var result = QueryUser(..).ThrowIfErr();
+// result will be:
+// - Ok(user) if QueryUser succeeds and returns Ok of the user;
+// - the application will throw otherwise.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_ThrowIfErr__1.htm">ThrowIfErr<span id="LST9F6B7ACD_50" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>E<span id="LST9F6B7ACD_51" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>(Func<span id="LST9F6B7ACD_52" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>String, E<span id="LST9F6B7ACD_53" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td>
+            Returns the result back when <a href="P_Orx_Fun_Result_Res_1_IsOk.htm">IsOk</a>; throws an exception of <span class="parameter">E</span> when <a href="P_Orx_Fun_Result_Res_1_IsErr.htm">IsErr</a>.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res MakeApiCall() {
+    // method that makes an api call.
+    // might fail; hence, returns a Res rather than void.
+}
+var result = MakeApiCall().ThrowIfErr&lt;HttpRequestException&gt;(err =&gt; new(err));
+// result will be:
+// - Ok() if MakeApiCall succeeds and returns Ok;
+// - the application will throw HttpRequestException created by the provided delegate otherwise.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_ToErrOf__1.htm">ToErrOf<span id="LST9F6B7ACD_54" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LST9F6B7ACD_55" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span></a></td><td>
+            Converts the result to Err&lt;TOut&gt; regardless of state of this result:
+            <ul><li>The error message will be carried on when this is of Err variant,</li><li>A generic error message will be created otherwise.</li></ul></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_ToString.htm">ToString</a></td><td>
+            String representation.
+            <br />(Overrides <a href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring#system-valuetype-tostring" target="_blank" rel="noopener noreferrer">ValueType<span id="LST9F6B7ACD_56" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>ToString<span id="LST9F6B7ACD_57" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a>)</td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_Try.htm">Try</a></td><td>
+             When IsOk executes <span class="parameter">action</span>(val) in a try-catch block: returns back itself if the process succeeds; Err if it throws.
+             Does not do anything and returns back itself when IsErr.
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res&lt;User&gt; TryGetUser() { .. }
+static void PutUserToDb(User user) {
+    // method that writes the user to a database table
+    // might fail and throw!
+}
+
+Res&lt;User&gt; user = TryGetUser().Try(PutUserToDb);
+// equivalently:
+Res&lt;User&gt; user = TryGetUser().Try(() =&gt; PutUserToDb());
+
+// user will be:
+// - Err(called on Err) if () returns Err.
+// - Err(relevant error message) if () returns Ok(user) but database action throws an exception.
+// - Ok(user) if () returns Ok(user), further the action is operated successfully;
+
+// it provides a shorthand for the following verbose/unpleasant version:
+Res&lt;User&gt; user = TryGetUser();
+if (user.IsOk)
+{
+    try
+    {
+        PutUserToDb(user.Unwrap());
+    }
+    catch (Exception e)
+    {
+        user = Err&lt;User&gt;("db-operation failed, check the exception message: " + e.Message);
+    }
+}</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_TryMap__1.htm">TryMap<span id="LST9F6B7ACD_58" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LST9F6B7ACD_59" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span></a></td><td>
+            Returns the error when IsErr.
+            Otherwise, tries to map into Ok(<span class="parameter">map</span>(val)) in a try-catch block and returns the Err if it throws.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res&lt;User&gt; TryGetUser() { .. }
+static long PutUserToDbGetId(User user) {
+    // method that writes the user to a database table and returns back the auto-generated id/primary-key
+    // might fail and throw!
+}
+
+Res&lt;long&gt; id = TryGetUser().TryMap(PutUserToDbGetId);
+// equivalently:
+Res&lt;long&gt; id = TryGetUser().TryMap(user =&gt; PutUserToDbGetId(user));
+// Res&lt;long&gt; id will be:
+// - Err(called on Err) when TryGetUser returns Err,
+// - Err(relevant error message) when TryGetUser returns Ok(user) but the database transaction throws an exception,
+// - Ok(id) when TryGetUser returns Ok(user), the database transaction succeeds and returns the auto-generated id.
+
+// it provides a shorthand for the following verbose/unpleasant version:
+Opt&lt;User&gt; user = TryGetUser();
+Res&lt;long&gt; id;
+if (user.IsNone)
+    id = Err&lt;long&gt;("no user");
+else
+{
+    try
+    {
+        id = Ok(PutUserToDb(user.Unwrap()));
+    }
+    catch (Exception e)
+    {
+        id = Err&lt;long&gt;("db-operation failed, check the exception message: " + e.Message);
+    }
+}</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_Unwrap.htm">Unwrap</a></td><td>
+            Returns the underlying value when <a href="P_Orx_Fun_Result_Res_1_IsOk.htm">IsOk</a>; or throws when <a href="P_Orx_Fun_Result_Res_1_IsErr.htm">IsErr</a>.
+            Must be called shyly, as it is not necessary to unwrap until the final result is achieved due to Map, FlatMap and TryMap methods.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">Res&lt;int&gt; resultAge = "42".ParseIntOrErr();
+if (resultAge.IsSome) {
+    int age = resultAge.Unwrap(); // use the uwrapped age
+} else { // handle the Err case
+}</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_UnwrapOr.htm">UnwrapOr(Func<span id="LST9F6B7ACD_60" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_61" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td>
+            Returns the underlying value when <a href="P_Orx_Fun_Result_Res_1_IsOk.htm">IsOk</a>; or returns <span class="parameter">lazyFallbackValue</span>() when <a href="P_Orx_Fun_Result_Res_1_IsErr.htm">IsErr</a>.
+            This is a safe way to unwrap the result, by explicitly handling the Err variant.
+            Use the eager <a href="M_Orx_Fun_Result_Res_1_UnwrapOr_1.htm">UnwrapOr(T)</a> variant if the fallback value is cheap or readily available.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static string ParseUserTablename(..) { /*parses the table name from command line input; might throw!*/ }
+static string QueryUserTablename(..) { /*makes an expensive db-call to find out the table name*/ }
+
+string userTable = Ok()                                         // Res, certainly Ok
+                    .TryMap(() =&gt; ParseUserTablename(..))       // Res&lt;string&gt;: might be Err if parser throws
+                    .UnwrapOr(() =&gt; QueryUserTablename(..));    // directly returns ParseUserTablename's result if it is Ok;
+                                                                // calls QueryUserTablename otherwise and returns its result.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_UnwrapOr_1.htm">UnwrapOr(T)</a></td><td>
+            Returns the underlying value when <a href="P_Orx_Fun_Result_Res_1_IsOk.htm">IsOk</a>; or returns the <span class="parameter">fallbackValue</span> when <a href="P_Orx_Fun_Result_Res_1_IsErr.htm">IsErr</a>.
+            This is a safe way to unwrap the result, by explicitly handling the Err variant.
+            Use the lazy <a href="M_Orx_Fun_Result_Res_1_UnwrapOr.htm">UnwrapOr(Func<span id="LST9F6B7ACD_62" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_63" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a> variant if the computation of the fallback value is expensive.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">Assert(Ok(42).UnwrapOr(7) == 42);
+Assert(Err&lt;int&gt;("error-message").UnwrapOr(7) == 7);</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_WithoutVal.htm">WithoutVal</a></td><td>
+            Converts into <a href="T_Orx_Fun_Result_Res.htm">Res</a> dropping the value if it <a href="P_Orx_Fun_Result_Res_1_IsOk.htm">IsOk</a>.
+            </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Operators</h2><div id="IDPGASection"><table id="OperatorList" class="table is-hoverable"><tr><td><a href="M_Orx_Fun_Result_Res_1_op_BitwiseOr.htm">BitwiseOr(Res<span id="LST9F6B7ACD_64" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_65" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>, Func<span id="LST9F6B7ACD_66" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T, Res<span id="LST9F6B7ACD_67" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_68" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span><span id="LST9F6B7ACD_69" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td><p>Limited ahd experimental for now; waiting for generics in operator overloading to be actually useful.</p>
+    
+            Returns None when IsNone; <span class="parameter">map</span>(val) when IsOk flattening the result.
+            Shorthand combining Map and Flatten calls.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res&lt;User&gt; TryGetUser() {
+    // method that tries to get the user, return Ok(user) or Err.
+}
+static Res&lt; double&gt; TryGetBalance(User user) {
+    // method that tries to get usedr's balance; which might fail, returns:
+    // Ok(balance) or Err
+}
+Res&lt;double&gt; balance = TryGetUser().FlatMap(TryGetBalance);
+// equivalent to both below:
+var balance = TryGetUser().FlatMap(user =&gt; TryGetBalance(user));
+var balance = TryGetUser()              // Res&lt;User&gt;
+    .Map(user =&gt; TryGetBalance(user))   // Res&lt;Res&gt;
+    .Flatten();                         // Res</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_op_BitwiseOr_1.htm">BitwiseOr(Res<span id="LST9F6B7ACD_70" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_71" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>, Func<span id="LST9F6B7ACD_72" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T, Res<span id="LST9F6B7ACD_73" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td><p>Limited ahd experimental for now; waiting for generics in operator overloading to be actually useful.</p>
+    
+            Returns the error when IsErr; <span class="parameter">map</span>(Unwrap()) when IsOk flattenning the result.
+            Shorthand combining Map and Flatten calls.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res&lt;Team&gt; TryGetTeam() { .. } // tries to grab a team; might fail, hence, returns Res.
+static Res TryPutTeam(Team team) { .. } // tries to put the team; might fail, hence, returns Res.
+
+Res result = TryGetTeam().FlatMap(TryPutTeam);
+// equivalently:
+Res result = TryGetTeam().FlatMap(team =&gt; TryPutTeam(team));
+
+// this is a shorthand for:
+Res result = TryGetTeam()   // Res&lt;Team&gt;
+    .Map(TryPutTeam)        // Res&lt;Res&gt;
+    .Flatten();             // Res</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_op_Division.htm">Division(Res<span id="LST9F6B7ACD_74" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_75" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>, Func<span id="LST9F6B7ACD_76" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T, T<span id="LST9F6B7ACD_77" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td><p>Limited ahd experimental for now; waiting for generics in operator overloading to be actually useful.</p>
+    
+            Returns the Err back when IsErr; Ok(<span class="parameter">map</span>(Unwrap())) when IsOk.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">// session will be Err if the user is Err; Ok of a session for the user when Ok.
+Res&lt;Session&gt; session = TryGetUser.Map(user =&gt; NewSession(user.Secrets));</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_op_Equality.htm">Equality(Res<span id="LST9F6B7ACD_78" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_79" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>, Res<span id="LST9F6B7ACD_80" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_81" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td>
+            Returns true if both results are <a href="P_Orx_Fun_Result_Res_1_IsOk.htm">IsOk</a> and their unwrapped values are equal; false otherwise.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">AssertEqual(Err&lt;int&gt;() == Err&lt;int&gt;(), false);
+AssertEqual(Err&lt;int&gt;() == Ok(42), false);
+AssertEqual(Ok(42) == Err&lt;int&gt;(), false);
+AssertEqual(Ok(42) == Ok(7), false);
+AssertEqual(Ok(42) == Ok(42), true);</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_1_op_Inequality.htm">Inequality(Res<span id="LST9F6B7ACD_82" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_83" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>, Res<span id="LST9F6B7ACD_84" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>T<span id="LST9F6B7ACD_85" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a></td><td>
+            Returns true if either value is <a href="P_Orx_Fun_Result_Res_1_IsErr.htm">IsErr</a> or their unwrapped values are not equal; false otherwise.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">AssertEqual(Err&lt;int&gt;() != Err&lt;int&gt;(), true);
+AssertEqual(Err&lt;int&gt;() != Ok(42), true);
+AssertEqual(Ok(42) != Err&lt;int&gt;(), true);
+AssertEqual(Ok(42) != Ok(7), true);
+AssertEqual(Ok(42) != Ok(42), false);</code></pre></div></div></td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Reference</h4><div><a href="N_Orx_Fun_Result.htm">Orx.Fun.Result Namespace</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Definition</a></li><li><a class="quickLink">Constructors</a></li><li><a class="quickLink">Properties</a></li><li><a class="quickLink">Methods</a></li><li><a class="quickLink">Operators</a></li><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div class="column">https://github.com/orxfun/orx-fun-result<div class="feedbackLink">Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:orx.ugur.arikan%40gmail.com?Subject=Orx.Fun.Result%20(C#)">orx.ugur.arikan@gmail.com</a></div>
+        <script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script> 
+				</div><div class="column"> 
+				</div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script></body></html>

@@ -379,8 +379,8 @@ public readonly struct Res<T> : IEquatable<Res<T>>
 
     // try
     /// <summary>
-    /// When IsOk executes <paramref name="action"/>(val) in a try-catch block: returns back itself if the process succeeds; Err if it throws.
-    /// Does not do anything and returns back itself when IsErr.
+    /// When IsOk executes <paramref name="action"/>(val) in a try-catch block: returns Ok if the process succeeds; Err if it throws.
+    /// Does not do anything and returns the Err when this IsErr.
     /// <code>
     /// static Res&lt;User> TryGetUser() { .. }
     /// static void PutUserToDb(User user) {
@@ -414,14 +414,14 @@ public readonly struct Res<T> : IEquatable<Res<T>>
     /// </summary>
     /// <param name="action">Action to be called with the underlying value in try-catch block when Ok.</param>
     /// <param name="name">Name of the operation/action; to be appended to the error messages if the action throws. Omitting the argument will automatically be filled with the action's expression in the caller side.</param>
-    public Res<T> Try(Action<T> action, [CallerArgumentExpression("action")] string name = "")
+    public Res Try(Action<T> action, [CallerArgumentExpression("action")] string name = "")
     {
         if (Err == null && Val != null)
         {
             try
             {
                 action(Val);
-                return this;
+                return Ok();
             }
             catch (Exception e)
             {
@@ -429,7 +429,7 @@ public readonly struct Res<T> : IEquatable<Res<T>>
             }
         }
         else
-            return this;
+            return WithoutVal();
     }
 
 

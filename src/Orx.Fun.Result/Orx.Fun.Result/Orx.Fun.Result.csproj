@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,7 +8,7 @@
   </PropertyGroup>
 
 	<PropertyGroup>
-		<VersionPrefix>1.0.1</VersionPrefix>
+		<VersionPrefix>1.1.0</VersionPrefix>
 		<Description>A simple result type for C#, not minding the error type, instead aiming to be explicit, concise and fluent.</Description>
 		<PackageProjectUrl>https://orxfun.github.io/orx-fun-result/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/orxfun/orx-fun-result</RepositoryUrl>
@@ -24,9 +24,9 @@
 			<PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
-	
-  <ItemGroup>
-    <PackageReference Include="Orx.Fun.Option" Version="1.0.0" />
-  </ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Orx.Fun.Option" Version="1.1.0" />
+	</ItemGroup>
+	
 </Project>

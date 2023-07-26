@@ -268,11 +268,32 @@ public static class ResultExtensions
     /// <typeparam name="T1">Type of the first argument of the map function.</typeparam>
     /// <typeparam name="T2">Type of the second argument of the map function.</typeparam>
     /// <typeparam name="TOut">Type of return value of the map function.</typeparam>
-    /// <param name="option">Option to be mapped.</param>
+    /// <param name="result">Result to be mapped.</param>
     /// <param name="map">Map function.</param>
     /// <returns></returns>
-    public static Res<TOut> Map<T1, T2, TOut>(this Res<(T1, T2)> option, Func<T1, T2, TOut> map)
-        => option.Map(x => map(x.Item1, x.Item2));
+    public static Res<TOut> Map<T1, T2, TOut>(this Res<(T1, T2)> result, Func<T1, T2, TOut> map)
+        => result.Map(x => map(x.Item1, x.Item2));
+    /// <summary>
+    /// (async version) Allows a result of a tuple (t1, t2) to map with a function taking two arguments t1 and t2.
+    /// 
+    /// <code>
+    /// static int Add(int a, int b) => a + b;
+    /// 
+    /// var numbers = Ok((1, 2));
+    /// var sum = numbers.Map(Add);
+    /// Assert(sum == Some(3));
+    /// </code>
+    /// 
+    /// This is mostly useful in enabling function composition.
+    /// </summary>
+    /// <typeparam name="T1">Type of the first argument of the map function.</typeparam>
+    /// <typeparam name="T2">Type of the second argument of the map function.</typeparam>
+    /// <typeparam name="TOut">Type of return value of the map function.</typeparam>
+    /// <param name="result">Result to be mapped.</param>
+    /// <param name="map">Map function.</param>
+    /// <returns></returns>
+    public static Task<Res<TOut>> Map<T1, T2, TOut>(this Res<(T1, T2)> result, Func<T1, T2, Task<TOut>> map)
+        => result.MapAsync(x => map(x.Item1, x.Item2));
 
 
     // opt-t to res-t
@@ -318,6 +339,14 @@ public static class ResultExtensions
     public static Res MapReduce<T>(this IEnumerable<T> collection, Func<T, Res> map)
         => collection.Select(map).Reduce();
     /// <summary>
+    /// (async version) <inheritdoc cref="MapReduce{T}(IEnumerable{T}, Func{T, Res})"/>
+    /// </summary>
+    /// <param name="collection">Collection of values.</param>
+    /// <param name="map">Function that maps each element of the collection to a result.</param>
+    /// <returns></returns>
+    public static Task<Res> MapReduceAsync<T>(this IEnumerable<T> collection, Func<T, Task<Res>> map)
+        => collection.Select(map).ReduceAsync();
+    /// <summary>
     /// Applies the result mapper to the collection and reduces it to a single result:
     /// <list type="bullet">
     /// <item>returns Ok(List&lt;T>) when all results are Ok;</item>
@@ -332,6 +361,16 @@ public static class ResultExtensions
     /// <returns></returns>
     public static Res<List<TOut>> MapReduce<T, TOut>(this IEnumerable<T> collection, Func<T, Res<TOut>> map)
         => collection.Select(map).Reduce();
+    /// <summary>
+    /// (async version) <inheritdoc cref="MapReduce{T, TOut}(IEnumerable{T}, Func{T, Res{TOut}})"/>
+    /// </summary>
+    /// <typeparam name="T">Type of the underlying values of the collection.</typeparam>
+    /// <typeparam name="TOut">Type of the underlying values of the mapped results.</typeparam>
+    /// <param name="collection">Collection of results of T.</param>
+    /// <param name="map">Function that maps each element of the collection to a result.</param>
+    /// <returns></returns>
+    public static Task<Res<List<TOut>>> MapReduceAsync<T, TOut>(this IEnumerable<T> collection, Func<T, Task<Res<TOut>>> map)
+        => collection.Select(map).ReduceAsync();
     /// <summary>
     /// Reduces the collection of results to a single result:
     /// <list type="bullet">
@@ -348,6 +387,16 @@ public static class ResultExtensions
             if (item.IsErr)
                 return item;
         return Ok();
+    }
+    /// <summary>
+    /// (async version) <inheritdoc cref="Reduce(IEnumerable{Res})"/>
+    /// </summary>
+    /// <param name="results">Collection of results.</param>
+    /// <returns></returns>
+    public static async Task<Res> ReduceAsync(this IEnumerable<Task<Res>> results)
+    {
+        var awaitedResults = await Task.WhenAll(results);
+        return awaitedResults.Reduce();
     }
     /// <summary>
     /// Reduces the collection of results to result of list of values:
@@ -370,5 +419,16 @@ public static class ResultExtensions
             else
                 return item.ToErrOf<List<T>>();
         return Ok(values);
+    }
+    /// <summary>
+    /// (async version) <inheritdoc cref="Reduce{T}(IEnumerable{Res{T}})"/>
+    /// </summary>
+    /// <typeparam name="T">Type of the underlying value.</typeparam>
+    /// <param name="results">Collection of results of T.</param>
+    /// <returns></returns>
+    public static async Task<Res<List<T>>> ReduceAsync<T>(this IEnumerable<Task<Res<T>>> results)
+    {
+        var awaitedResults = await Task.WhenAll(results);
+        return awaitedResults.Reduce();
     }
 }

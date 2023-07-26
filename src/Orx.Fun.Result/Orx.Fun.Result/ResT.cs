@@ -179,6 +179,12 @@ public readonly struct Res<T> : IEquatable<Res<T>>
     /// <param name="lazyFallbackValue">Function to be called lazily to create the return value if the option is None.</param>
     public T UnwrapOr(Func<T> lazyFallbackValue)
         => (Err == null && Val != null) ? Val : lazyFallbackValue();
+    /// <summary>
+    /// (async version) <inheritdoc cref="UnwrapOr(Func{T})"/>
+    /// </summary>
+    /// <param name="lazyFallbackValue">Function to be called lazily to create the return value if the option is None.</param>
+    public Task<T> UnwrapOrAsync(Func<Task<T>> lazyFallbackValue)
+        => (Err == null && Val != null) ? Task.FromResult(Val) : lazyFallbackValue();
 
 
     // match
@@ -197,6 +203,19 @@ public readonly struct Res<T> : IEquatable<Res<T>>
     /// <param name="whenOk">Mapping function (T -> TOut) that will be called with Unwrapped value to get the return value when Ok.</param>
     /// <param name="whenErr">Function of the error message to get the return value when Err.</param>
     public TOut Match<TOut>(Func<T, TOut> whenOk, Func<string, TOut> whenErr)
+    {
+        if (Err != null)
+            return whenErr(Err);
+        if (Val != null)
+            return whenOk(Val);
+        throw Exc.MustNotReach;
+    }
+    /// <summary>
+    /// (async version) <inheritdoc cref="Match{TOut}(Func{T, TOut}, Func{string, TOut})"/>
+    /// </summary>
+    /// <param name="whenOk">Mapping function (T -> TOut) that will be called with Unwrapped value to get the return value when Ok.</param>
+    /// <param name="whenErr">Function of the error message to get the return value when Err.</param>
+    public Task<TOut> MatchAsync<TOut>(Func<T, Task<TOut>> whenOk, Func<string, Task<TOut>> whenErr)
     {
         if (Err != null)
             return whenErr(Err);
@@ -280,6 +299,19 @@ public readonly struct Res<T> : IEquatable<Res<T>>
         else
             throw Exc.MustNotReach;
     }
+    /// <summary>
+    /// (async version) <inheritdoc cref="Map{TOut}(Func{T, TOut})"/>
+    /// </summary>
+    /// <param name="map">Mapper function (T -> TOut) to be called with the underlying value when Ok.</param>
+    public async Task<Res<TOut>> MapAsync<TOut>(Func<T, Task<TOut>> map)
+    {
+        if (Err == null && Val != null)
+            return Ok(await map(Val));
+        else if (Err != null)
+            return Err<TOut>(Err);
+        else
+            throw Exc.MustNotReach;
+    }
 
 
     // flatmap
@@ -311,6 +343,19 @@ public readonly struct Res<T> : IEquatable<Res<T>>
             throw Exc.MustNotReach;
     }
     /// <summary>
+    /// (async version) <inheritdoc cref="FlatMap(Func{T, Res})"/>
+    /// </summary>
+    /// <param name="map">Function (T -> Res) that maps the underlying value to a Res when IsOk.</param>
+    public Task<Res> FlatMapAsync(Func<T, Task<Res>> map)
+    {
+        if (Err == null && Val != null)
+            return map(Val);
+        else if (Err != null)
+            return Task.FromResult(Err(Err));
+        else
+            throw Exc.MustNotReach;
+    }
+    /// <summary>
     /// Returns None when IsNone; <paramref name="map"/>(val) when IsOk flattening the result.
     /// Shorthand combining Map and Flatten calls.
     /// <code>
@@ -336,6 +381,19 @@ public readonly struct Res<T> : IEquatable<Res<T>>
             return map(Val);
         else if (Err != null)
             return Err<TOut>(Err);
+        else
+            throw Exc.MustNotReach;
+    }
+    /// <summary>
+    /// (async version) <inheritdoc cref="FlatMap{TOut}(Func{T, Res{TOut}})"/>
+    /// </summary>
+    /// <param name="map">Function (T -> Res&lt;TOut>) mapping the underlying value to result of TOut if this.IsOk.</param>
+    public Task<Res<TOut>> FlatMapAsync<TOut>(Func<T, Task<Res<TOut>>> map)
+    {
+        if (Err == null && Val != null)
+            return map(Val);
+        else if (Err != null)
+            return Task.FromResult(Err<TOut>(Err));
         else
             throw Exc.MustNotReach;
     }
@@ -370,6 +428,18 @@ public readonly struct Res<T> : IEquatable<Res<T>>
     public Res<T> FlatMapBack(Func<T, Res> map)
     {
         var flatmap = FlatMap(map);
+        if (flatmap.IsErr)
+            return flatmap.Err is null ? throw Exc.MustNotReach : Err<T>(flatmap.Err);
+        else
+            return this;
+    }
+    /// <summary>
+    /// (async version) <inheritdoc cref="FlatMapBack(Func{T, Res})"/>
+    /// </summary>
+    /// <param name="map">Function (T -> Res) that maps the underlying value to a Res when IsOk.</param>
+    public async Task<Res<T>> FlatMapBackAsync(Func<T, Task<Res>> map)
+    {
+        var flatmap = await FlatMapAsync(map);
         if (flatmap.IsErr)
             return flatmap.Err is null ? throw Exc.MustNotReach : Err<T>(flatmap.Err);
         else
@@ -479,6 +549,27 @@ public readonly struct Res<T> : IEquatable<Res<T>>
             try
             {
                 return new(map(Val));
+            }
+            catch (Exception e)
+            {
+                return new(string.Empty, name, e);
+            }
+        }
+        else
+            return new(Err ?? string.Empty, string.Empty, null);
+    }
+    /// <summary>
+    /// (async version) <inheritdoc cref="TryMap{TOut}(Func{T, TOut}, string)"/>
+    /// </summary>
+    /// <param name="map">Function (T -> TOut) to be called in try-catch block to get the result when Ok; will not be called when Err.</param>
+    /// <param name="name">Name of the map function/operation; to be appended to the error messages if the function throws. Omitting the argument will automatically be filled with the function's expression in the caller side.</param>
+    public async Task<Res<TOut>> TryMapAsync<TOut>(Func<T, Task<TOut>> map, [CallerArgumentExpression("map")] string name = "")
+    {
+        if (Err == null && Val != null)
+        {
+            try
+            {
+                return new(await map(Val));
             }
             catch (Exception e)
             {

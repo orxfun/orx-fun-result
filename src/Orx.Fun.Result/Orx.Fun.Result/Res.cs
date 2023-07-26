@@ -158,6 +158,13 @@ public readonly struct Res
     public TOut Match<TOut>(Func<TOut> whenOk, Func<string, TOut> whenErr)
         => IsOk ? whenOk() : whenErr(ToString());
     /// <summary>
+    /// (async version) <inheritdoc cref="Match{TOut}(Func{TOut}, Func{string, TOut})"/>
+    /// </summary>
+    /// <param name="whenOk">Function (() -> TOut) to be called lazily to get the return value when IsOk.</param>
+    /// <param name="whenErr">Map function (string -> TOut) to be called to get the return value when IsErr.</param>
+    public Task<TOut> MatchAsync<TOut>(Func<Task<TOut>> whenOk, Func<string, Task<TOut>> whenErr)
+        => IsOk ? whenOk() : whenErr(ToString());
+    /// <summary>
     /// Executes <paramref name="whenOk"/>() whenever IsOk; and <paramref name="whenErr"/>(errorMessage) otherwise.
     /// <code>
     /// Res&lt;User> user = TryGetUser(..);
@@ -251,6 +258,12 @@ public readonly struct Res
     /// <param name="map">Map function that will be called lazily to get the return value only if this IsOk.</param>
     public Res<TOut> Map<TOut>(Func<TOut> map)
         => Err == null ? new(map()) : new(Err, string.Empty, null);
+    /// <summary>
+    /// (async version) <inheritdoc cref="Map{TOut}(Func{TOut})"/>
+    /// </summary>
+    /// <param name="map">Map function that will be called lazily to get the return value only if this IsOk.</param>
+    public async Task<Res<TOut>> MapAsync<TOut>(Func<Task<TOut>> map)
+        => Err == null ? new(await map()) : new(Err, string.Empty, null);
 
 
     // flatmap
@@ -275,6 +288,12 @@ public readonly struct Res
     public Res FlatMap(Func<Res> map)
         => Err == null ? map() : new(Err, string.Empty, null);
     /// <summary>
+    /// (async version) <inheritdoc cref="FlatMap(Func{Res})"/>
+    /// </summary>
+    /// <param name="map">Map function to be called lazily to get the final result only if this IsOk.</param>
+    public Task<Res> FlatMapAsync(Func<Task<Res>> map)
+        => Err == null ? map() : Task.FromResult(new Res(Err, string.Empty, null));
+    /// <summary>
     /// Returns the error when IsErr; <paramref name="map"/>() when IsOk, flattenning the result.
     /// This is a shorthand for sequential Map and Flatten calls.
     /// <code>
@@ -294,6 +313,12 @@ public readonly struct Res
     /// <param name="map">Map function to be called lazily to get the final result only if this IsOk.</param>
     public Res<TOut> FlatMap<TOut>(Func<Res<TOut>> map)
         => Err == null ? map() : new(Err, string.Empty, null);
+    /// <summary>
+    /// (async version) <inheritdoc cref="FlatMap{TOut}(Func{Res{TOut}})"/>
+    /// </summary>
+    /// <param name="map">Map function to be called lazily to get the final result only if this IsOk.</param>
+    public Task<Res<TOut>> FlatMapAsync<TOut>(Func<Task<Res<TOut>>> map)
+        => Err == null ? map() : Task.FromResult(new Res<TOut>(Err, string.Empty, null));
 
 
     // try
@@ -355,6 +380,27 @@ public readonly struct Res
             try
             {
                 return new(map());
+            }
+            catch (Exception e)
+            {
+                return new(string.Empty, name, e);
+            }
+        }
+        else
+            return new(Err, string.Empty, null);
+    }
+    /// <summary>
+    /// (async version) <inheritdoc cref="TryMap{TOut}(Func{TOut}, string)"/>
+    /// </summary>
+    /// <param name="map">Map function to be called lazily to create the result only if this IsOk.</param>
+    /// <param name="name">Name of the map function; to be appended to the error messages if the function throws. Omitting the argument will automatically be filled with the function's expression in the caller side.</param>
+    public async Task<Res<TOut>> TryMapAsync<TOut>(Func<Task<TOut>> map, [CallerArgumentExpression("map")] string name = "")
+    {
+        if (Err == null)
+        {
+            try
+            {
+                return new(await map());
             }
             catch (Exception e)
             {

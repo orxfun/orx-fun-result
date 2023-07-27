@@ -178,7 +178,40 @@ var result = TryLogin().Try(ClearSessionHistory);
 // the result will be:
 // - Err if TryLogin returns Err, in which case ClearSessionHistory is never called;
 // - Ok if TryLogin returns Ok; and ClearSessionHistory call succeeds without an exception;
-// - Err if TryLogin returns Ok, but ClearSessionHistory throws an exception.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_TryMap__1.htm">TryMap<span id="LSTAEACDB6F_57" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LSTAEACDB6F_58" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span></a></td><td>
+// - Err if TryLogin returns Ok, but ClearSessionHistory throws an exception.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_TryFlatMap__1.htm">TryFlatMap<span id="LSTAEACDB6F_57" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LSTAEACDB6F_58" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span></a></td><td>
+            Returns the error when IsErr.
+            Otherwise, tries to return <span class="parameter">map</span>(val) in a try-catch block and returns the Err if it throws.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res&lt;User&gt; TryGetUser() { .. }
+static Res&lt;long&gt; PutUserToDbGetId(User user) {
+    // method that writes the user to a database table and returns back the auto-generated id/primary-key
+    // might throw in cases of connection errors!
+}
+
+Res&lt;long&gt; id = TryGetUser().TryFlatMap(PutUserToDbGetId);
+// equivalently:
+Res&lt;long&gt; id = TryGetUser().TryFlatMap(user =&gt; PutUserToDbGetId(user));
+// Res&lt;long&gt; id will be:
+// - Err(called on Err) when TryGetUser returns Err,
+// - Err(relevant error message) when TryGetUser returns Ok(user) but PutUserToDbGetId returns an Err,
+// - Err(relevant error message) when TryGetUser returns Ok(user) but the database transaction throws an exception,
+// - Ok(id) when TryGetUser returns Ok(user), the database transaction succeeds and returns the auto-generated id.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_TryFlatMapAsync__1.htm">TryFlatMapAsync<span id="LSTAEACDB6F_59" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LSTAEACDB6F_60" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span></a></td><td>
+            (async version) 
+            Returns the error when IsErr.
+            Otherwise, tries to return <span class="parameter">map</span>(val) in a try-catch block and returns the Err if it throws.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res&lt;User&gt; TryGetUser() { .. }
+static Res&lt;long&gt; PutUserToDbGetId(User user) {
+    // method that writes the user to a database table and returns back the auto-generated id/primary-key
+    // might throw in cases of connection errors!
+}
+
+Res&lt;long&gt; id = TryGetUser().TryFlatMap(PutUserToDbGetId);
+// equivalently:
+Res&lt;long&gt; id = TryGetUser().TryFlatMap(user =&gt; PutUserToDbGetId(user));
+// Res&lt;long&gt; id will be:
+// - Err(called on Err) when TryGetUser returns Err,
+// - Err(relevant error message) when TryGetUser returns Ok(user) but PutUserToDbGetId returns an Err,
+// - Err(relevant error message) when TryGetUser returns Ok(user) but the database transaction throws an exception,
+// - Ok(id) when TryGetUser returns Ok(user), the database transaction succeeds and returns the auto-generated id.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_TryMap__1.htm">TryMap<span id="LSTAEACDB6F_61" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LSTAEACDB6F_62" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span></a></td><td>
             Returns the error when IsErr.
             Otherwise, tries to map into Ok(<span class="parameter">map</span>()) in a try-catch block and returns the Err if it throws.
             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res ValidateUser(User user) { /*returns Ok if valid; Err o/w*/ }
@@ -187,7 +220,7 @@ static Res&lt;Secret&gt; TryGetSecrets(User user) { /*returns Ok(secrets) if suc
 User user = GetUser(..);
 var secrets = ValidateUser(user).TryMap(() =&gt; TryGetSecrets(user));
 // TryGetSecrets will be called only if ValidateUser call returns Ok;
-// secrets will be Ok of the grabbed secrets if both ValidateUser and TryGetSecrets return Ok.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_TryMapAsync__1.htm">TryMapAsync<span id="LSTAEACDB6F_59" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LSTAEACDB6F_60" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span></a></td><td>
+// secrets will be Ok of the grabbed secrets if both ValidateUser and TryGetSecrets return Ok.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_TryMapAsync__1.htm">TryMapAsync<span id="LSTAEACDB6F_63" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LSTAEACDB6F_64" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span></a></td><td>
             (async version) 
             Returns the error when IsErr.
             Otherwise, tries to map into Ok(<span class="parameter">map</span>()) in a try-catch block and returns the Err if it throws.

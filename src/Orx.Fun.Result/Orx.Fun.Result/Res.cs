@@ -434,6 +434,68 @@ public readonly struct Res
     }
 
 
+    // try-flat-map
+    /// <summary>
+    /// Returns the error when IsErr.
+    /// Otherwise, tries to return <paramref name="map"/>(val) in a try-catch block and returns the Err if it throws.
+    /// <code>
+    /// static Res&lt;User> TryGetUser() { .. }
+    /// static Res&lt;long> PutUserToDbGetId(User user) {
+    ///     // method that writes the user to a database table and returns back the auto-generated id/primary-key
+    ///     // might throw in cases of connection errors!
+    /// }
+    /// 
+    /// Res&lt;long> id = TryGetUser().TryFlatMap(PutUserToDbGetId);
+    /// // equivalently:
+    /// Res&lt;long> id = TryGetUser().TryFlatMap(user => PutUserToDbGetId(user));
+    /// // Res&lt;long> id will be:
+    /// // - Err(called on Err) when TryGetUser returns Err,
+    /// // - Err(relevant error message) when TryGetUser returns Ok(user) but PutUserToDbGetId returns an Err,
+    /// // - Err(relevant error message) when TryGetUser returns Ok(user) but the database transaction throws an exception,
+    /// // - Ok(id) when TryGetUser returns Ok(user), the database transaction succeeds and returns the auto-generated id.
+    /// </code>
+    /// </summary>
+    /// <param name="map">Function (() -> Res&lt;TOut>) to be called in try-catch block to get the result when Ok; will not be called when Err.</param>
+    /// <param name="name">Name of the map function/operation; to be appended to the error messages if the function throws. Omitting the argument will automatically be filled with the function's expression in the caller side.</param>
+    public Res<TOut> TryFlatMap<TOut>(Func<Res<TOut>> map, [CallerArgumentExpression("map")] string name = "")
+    {
+        if (Err == null)
+        {
+            try
+            {
+                return map();
+            }
+            catch (Exception e)
+            {
+                return new(string.Empty, name, e);
+            }
+        }
+        else
+            return new(Err ?? string.Empty, string.Empty, null);
+    }
+    /// <summary>
+    /// (async version) <inheritdoc cref="TryFlatMap{TOut}(Func{Res{TOut}}, string)"/>
+    /// </summary>
+    /// <param name="map">Function (() -> Res&lt;TOut>) to be called in try-catch block to get the result when Ok; will not be called when Err.</param>
+    /// <param name="name">Name of the map function/operation; to be appended to the error messages if the function throws. Omitting the argument will automatically be filled with the function's expression in the caller side.</param>
+    public async Task<Res<TOut>> TryFlatMapAsync<TOut>(Func<Task<Res<TOut>>> map, [CallerArgumentExpression("map")] string name = "")
+    {
+        if (Err == null)
+        {
+            try
+            {
+                return await map();
+            }
+            catch (Exception e)
+            {
+                return new(string.Empty, name, e);
+            }
+        }
+        else
+            return new(Err ?? string.Empty, string.Empty, null);
+    }
+
+
     // map - err
     /// <summary>
     /// Converts the result to Err&lt;TOut> regardless of state of this result:

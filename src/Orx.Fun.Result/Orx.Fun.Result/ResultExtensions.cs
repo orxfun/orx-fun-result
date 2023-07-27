@@ -307,8 +307,8 @@ public static class ResultExtensions
     /// <typeparam name="T">Type of the underlying value.</typeparam>
     /// <param name="option">Option to be converted to result.</param>
     /// <returns></returns>
-    public static Res<T> OkIfSome<T>(this Opt<T> option)
-        => option.IsSome ? Ok(option.Unwrap()) : Err<T>(string.Format("{0} is called on None of {1}.", nameof(OkIfSome), typeof(T).Name));
+    public static Res<T> IntoRes<T>(this Opt<T> option)
+        => option.IsSome ? Ok(option.Unwrap()) : Err<T>(string.Format("{0} is called on None of {1}.", nameof(IntoRes), typeof(T).Name));
     /// <summary>
     /// Shorthand for mapping options to results as follows:
     /// <list type="bullet">
@@ -320,7 +320,7 @@ public static class ResultExtensions
     /// <param name="option">Option to be converted to result.</param>
     /// <param name="errorMessageIfNone">Error message to be stored in the Err to be returned if the option is None.</param>
     /// <returns></returns>
-    public static Res<T> OkIfSome<T>(this Opt<T> option, string errorMessageIfNone)
+    public static Res<T> IntoRes<T>(this Opt<T> option, string errorMessageIfNone)
         => option.IsSome ? Ok(option.Unwrap()) : Err<T>(errorMessageIfNone);
 
 

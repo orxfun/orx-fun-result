@@ -167,6 +167,17 @@ var result = TryLogin().Try(ClearSessionHistory);
 // the result will be:
 // - Err if TryLogin returns Err, in which case ClearSessionHistory is never called;
 // - Ok if TryLogin returns Ok; and ClearSessionHistory call succeeds without an exception;
+// - Err if TryLogin returns Ok, but ClearSessionHistory throws an exception.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_TryAsync.htm">TryAsync</a></td><td>
+            (async version) 
+            When IsOk executes <span class="parameter">action</span>() in a try-catch block: returns back itself if the process succeeds; Err if it throws.
+            Does not do anything and returns back itself when IsErr.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">static Res TryLogin() { .. }
+static void ClearSessionHistory() { /*risky function, might throw!*/ }
+
+var result = TryLogin().Try(ClearSessionHistory);
+// the result will be:
+// - Err if TryLogin returns Err, in which case ClearSessionHistory is never called;
+// - Ok if TryLogin returns Ok; and ClearSessionHistory call succeeds without an exception;
 // - Err if TryLogin returns Ok, but ClearSessionHistory throws an exception.</code></pre></div></div></td></tr><tr><td><a href="M_Orx_Fun_Result_Res_TryMap__1.htm">TryMap<span id="LSTAEACDB6F_57" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>TOut<span id="LSTAEACDB6F_58" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span></a></td><td>
             Returns the error when IsErr.
             Otherwise, tries to map into Ok(<span class="parameter">map</span>()) in a try-catch block and returns the Err if it throws.

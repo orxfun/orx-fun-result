@@ -501,6 +501,28 @@ public readonly struct Res<T> : IEquatable<Res<T>>
         else
             return WithoutVal();
     }
+    /// <summary>
+    /// (async version) <inheritdoc cref="Try(Action{T}, string)"/>
+    /// </summary>
+    /// <param name="action">Action to be called with the underlying value in try-catch block when Ok.</param>
+    /// <param name="name">Name of the operation/action; to be appended to the error messages if the action throws. Omitting the argument will automatically be filled with the action's expression in the caller side.</param>
+    public async Task<Res> TryAsync(Func<T, Task> action, [CallerArgumentExpression("action")] string name = "")
+    {
+        if (Err == null && Val != null)
+        {
+            try
+            {
+                await action(Val);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return new(string.Empty, name, e);
+            }
+        }
+        else
+            return WithoutVal();
+    }
 
 
     // try-map

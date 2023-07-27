@@ -355,6 +355,28 @@ public readonly struct Res
         else
             return this;
     }
+    /// <summary>
+    /// (async version) <inheritdoc cref="Try(Action, string)"/>
+    /// </summary>
+    /// <param name="action">Action to be executed in a try-catcy block only if this IsOk.</param>
+    /// <param name="name">Name of the map action; to be appended to the error messages if the action throws. Omitting the argument will automatically be filled with the action's expression in the caller side.</param>
+    public async Task<Res> TryAsync(Func<Task> action, [CallerArgumentExpression("action")] string name = "")
+    {
+        if (Err == null)
+        {
+            try
+            {
+                await action();
+                return this;
+            }
+            catch (Exception e)
+            {
+                return new(string.Empty, name, e);
+            }
+        }
+        else
+            return this;
+    }
 
 
     // try-map

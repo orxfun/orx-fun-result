@@ -801,6 +801,42 @@ public readonly struct Res<T> : IEquatable<Res<T>>
             return And(lazyOther());
     }
 
+    /// <summary>
+    /// Combines two results: this and <paramref name="other"/> as follows:
+    /// <list type="bullet">
+    /// <item>returns this if this is Ok;</item>
+    /// <item>returns <paramref name="other"/> otherwise.</item>
+    /// </list>
+    /// 
+    /// <para>In other words, this is a flattened alternative to <see cref="UnwrapOr(T)"/>.</para>
+    /// 
+    /// <code>
+    /// var or = Ok(42).Or(Ok(7));
+    /// Assert.Equal(Ok(42), or);
+    /// 
+    /// or = Ok(42).Or(Err&lt;int>("error-message"));
+    /// Assert.Equal(Ok(42), or);
+    /// 
+    /// or = Err&lt;int>("error-message").Or(Ok(7));
+    /// Assert.Equal(Ok(7), or);
+    /// 
+    /// or = Err&lt;int>("error-message").Or(Err&lt;int>("second-error-message"));
+    /// Assert.True(or.IsErr);
+    /// Assert.Equal(Some("second-error-message"), or.ErrorMessage());
+    /// </code>
+    /// </summary>
+    /// <param name="other">Other result to combine with.</param>
+    /// <returns></returns>
+    public Res<T> Or(Res<T> other)
+        => Err == null ? this : other;
+    /// <summary>
+    /// (lazy version) <inheritdoc cref="Or(Res{T})"/>
+    /// </summary>
+    /// <param name="other">Other result to combine with.</param>
+    /// <returns></returns>
+    public Res<T> Or(Func<Res<T>> other)
+        => Err == null ? this : other();
+
 
     // into-opt
     /// <summary>

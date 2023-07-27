@@ -515,6 +515,42 @@ public readonly struct Res
     }
 
 
+    // logical combinations
+    /// <summary>
+    /// Combines two results: this and <paramref name="other"/> as follows:
+    /// <list type="bullet">
+    /// <item>returns this if this is Ok;</item>
+    /// <item>returns <paramref name="other"/> otherwise.</item>
+    /// </list>
+    /// 
+    /// <code>
+    /// var or = Ok().Or(Ok());
+    /// Assert.True(or.IsOk);
+    /// 
+    /// or = Ok().Or(Err("error-message"));
+    /// Assert.True(or.IsOk);
+    /// 
+    /// or = Err("error-message").Or(Ok());
+    /// Assert.True(or.IsOk);
+    /// 
+    /// or = Err("error-message").Or(Err("second-error-message"));
+    /// Assert.True(or.IsErr);
+    /// Assert.Equal(Some("second-error-message"), or.ErrorMessage());
+    /// </code>
+    /// </summary>
+    /// <param name="other">Other result to combine with.</param>
+    /// <returns></returns>
+    public Res Or(Res other)
+        => Err == null ? this : other;
+    /// <summary>
+    /// (lazy version) <inheritdoc cref="Or(Res)"/>
+    /// </summary>
+    /// <param name="other">Other result to combine with.</param>
+    /// <returns></returns>
+    public Res Or(Func<Res> other)
+        => Err == null ? this : other();
+
+
     // compose
     /// <summary>
     /// Simply returns Ok function: () => Ok().

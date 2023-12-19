@@ -192,7 +192,11 @@ public static class ResultExtensionsLinq
     public static IEnumerable<T> FilterMapUnwrap<T>(this IEnumerable<Res<T>> collection)
     {
         foreach (var item in collection)
+        {
             if (item.IsOk)
+            {
                 yield return item.Unwrap();
+            }
+        }
     }
 }

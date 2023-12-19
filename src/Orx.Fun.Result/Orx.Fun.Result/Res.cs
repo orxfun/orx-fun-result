@@ -5,7 +5,7 @@ namespace Orx.Fun.Result;
 /// <summary>
 /// Valueless result type which can be either of the two variants: Ok or Err(error-message).
 /// </summary>
-public readonly struct Res
+public readonly partial struct Res
 {
     // data
     internal readonly string? Err;
@@ -516,6 +516,28 @@ public readonly struct Res
 
 
     // logical combinations
+    /// <summary>
+    /// Combines two results: this and <paramref name="other"/> as follows:
+    /// <list type="bullet">
+    /// <item>returns Ok if both are Ok;</item>
+    /// <item>returns the error if one of the results is an Err;</item>
+    /// <item>returns the combined error if both results are Err.</item>
+    /// </list>
+    /// </summary>
+    /// <param name="other">Other result to combine with.</param>
+    /// <returns></returns>
+    public Res And(Res other)
+    {
+        if (Err == null)
+            return other;
+        else
+        {
+            if (other.Err == null)
+                return this;
+            else
+                return new(Err + Environment.NewLine + other.Err, string.Empty, null);
+        }
+    }
     /// <summary>
     /// Combines two results: this and <paramref name="other"/> as follows:
     /// <list type="bullet">

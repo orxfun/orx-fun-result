@@ -767,7 +767,6 @@ public readonly struct Res<T> : IEquatable<Res<T>>
     /// <returns></returns>
     public Res<(T, T2)> And<T2>(Res<T2> other)
     {
-
         if (Err == null && Val != null)
         {
             if (other.IsOk && other.Val != null)
